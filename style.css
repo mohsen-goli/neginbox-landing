@@ -99,6 +99,24 @@ body {
 @media (max-width: 768px) {
   .navbar {
     padding: 20px;
+    .footer {
+      padding: 60px 20px 25px;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .footer-brand p {
+      margin: 0 auto;
+    }
+
+    .footer-links,
+    .footer-social {
+      align-items: center;
+    }
   }
 
   .navbar nav {
@@ -150,8 +168,8 @@ body {
 }
 .product-card img {
   width: 100%;
-  height: 350px;
-  object-fit: cover;
+  height: 300px;
+  object-fit: contain;
   display: block;
 
   transition: transform 0.5s ease;
@@ -176,4 +194,155 @@ body {
 .product-button:hover {
   opacity: 0.8;
   transform: translateY(-2px);
+}
+.features {
+  padding: 100px 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background-color: #fff;
+  padding: 35px;
+  border-radius: 16px;
+  text-align: center;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #777;
+}
+
+.feature-card h3 {
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  color: #777;
+  line-height: 2;
+}
+.cta {
+  margin: 40px 60px 100px;
+  padding: 80px 40px;
+
+  background-color: #24211e;
+  color: white;
+
+  border-radius: 24px;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.cta-content > p:first-child {
+  font-size: 14px;
+  margin-bottom: 15px;
+  opacity: 0.7;
+}
+
+.cta-content h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  line-height: 2;
+  opacity: 0.8;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+
+  background-color: white;
+  color: #24211e;
+
+  text-decoration: none;
+  border-radius: 8px;
+
+  transition: 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  opacity: 0.85;
+}
+.footer {
+  background-color: #1c1a18;
+  color: white;
+  padding: 70px 60px 25px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.footer-brand p {
+  max-width: 350px;
+  line-height: 2;
+  color: #aaa;
+}
+
+.footer-links,
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 50px auto 0;
+  padding-top: 25px;
+
+  border-top: 1px solid #333;
+
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #777;
+  font-size: 13px;
 }
