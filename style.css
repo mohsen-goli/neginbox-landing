@@ -9,12 +9,11 @@ html {
 }
 
 body {
-  font-family: Tahoma, sans-serif;
+  font-family: "Estedad", sans-serif;
   background-color: #f7f5f2;
   color: #24211e;
   overflow-x: hidden;
 }
-
 /* =========================
    NAVBAR
 ========================= */
