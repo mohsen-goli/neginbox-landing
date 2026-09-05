@@ -1,47 +1,78 @@
 <!doctype html>
+
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    ```
     <title>نگین باکس | تخت خواب باکس</title>
-   <link
-    href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="style.css" />
+    ```
   </head>
 
   <body>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
     <header class="navbar">
       <a href="#" class="logo">نگین باکس</a>
 
+      ```
       <nav>
         <a href="#products">محصولات</a>
         <a href="#about">درباره ما</a>
         <a href="#contact">تماس با ما</a>
       </nav>
 
-      <a href="#products" class="nav-button">مشاهده محصولات</a>
+      <a href="#products" class="nav-button"> مشاهده محصولات </a>
     </header>
+
+    <!-- =========================
+     HERO
+========================== -->
     <section class="hero">
       <div class="hero-content">
-        <p class="hero-subtitle">نگین باکس</p>
+        <p class="hero-subtitle">تخت باکس نگین</p>
 
-        <h1>تختی برای<br />آرامش بیشتر</h1>
+        <h1>
+          آرامش بیشتر،
+          <br />
+          فضای بیشتر.
+        </h1>
 
         <p class="hero-text">
-          تخت‌خواب‌های باکس نگین، ترکیبی از طراحی زیبا، کیفیت و فضای کاربردی.
+          تخت‌های باکس نگین با طراحی مدرن، کیفیت ساخت بالا و فضای ذخیره‌سازی
+          کاربردی، برای اتاقی زیباتر و خوابی راحت‌تر.
         </p>
 
-        <a href="#products" class="hero-button"> مشاهده محصولات </a>
+        <div class="hero-actions">
+          <a href="#products" class="hero-button"> مشاهده مدل‌ها </a>
+
+          <a href="#contact" class="hero-secondary-button"> تماس و مشاوره </a>
+        </div>
+
+        <div class="hero-trust">
+          <span>✓ کیفیت ساخت</span>
+          <span>✓ فضای ذخیره‌سازی</span>
+          <span>✓ طراحی مدرن</span>
+        </div>
       </div>
 
       <div class="hero-image">
         <img src="images/hero.jpg" alt="تخت خواب باکس نگین" />
       </div>
     </section>
+
+    <!-- =========================
+     PRODUCTS
+========================== -->
     <section class="products" id="products">
       <div class="section-header">
         <p>محصولات نگین‌باکس</p>
@@ -51,38 +82,70 @@
         <p>انتخابی از تخت‌های باکس نگین برای خوابی راحت و فضایی زیبا.</p>
       </div>
 
+      <!-- PRODUCTS GRID -->
       <div class="products-grid">
+        <!-- PRODUCT 1 -->
         <article class="product-card">
-          <img src="images/bed-1.jpg" alt="تخت خواب باکس نگین" />
+          <img src="images/bed-1.jpg" alt="تخت باکس مدل کلاسیک نگین" />
 
           <div class="product-info">
             <h3>مدل کلاسیک</h3>
+
             <p>طراحی ساده و شیک</p>
-            <a href="#" class="product-button">مشاهده محصول</a>
+            <a
+              href="https://wa.me/989123261810"
+              class="product-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              مشاوره و سفارش
+            </a>
           </div>
         </article>
 
+        <!-- PRODUCT 2 -->
         <article class="product-card">
-          <img src="images/bed-2.jpg" alt="تخت خواب باکس نگین" />
+          <img src="images/bed-2.jpg" alt="تخت باکس مدل مدرن نگین" />
 
           <div class="product-info">
             <h3>مدل مدرن</h3>
+
             <p>طراحی مدرن و کاربردی</p>
-            <a href="#" class="product-button">مشاهده محصول</a>
+            <a
+              href="https://wa.me/989123261810"
+              class="product-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              مشاوره و سفارش
+            </a>
           </div>
         </article>
 
+        <!-- PRODUCT 3 -->
         <article class="product-card">
-          <img src="images/bed-3.jpg" alt="تخت خواب باکس نگین" />
+          <img src="images/bed-3.jpg" alt="تخت باکس مدل ویژه نگین" />
 
           <div class="product-info">
             <h3>مدل ویژه</h3>
+
             <p>ترکیب زیبایی و کاربرد</p>
-            <a href="#" class="product-button">مشاهده محصول</a>
+            <a
+              href="https://wa.me/989123261810"
+              class="product-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              مشاوره و سفارش
+            </a>
           </div>
         </article>
       </div>
     </section>
+
+    <!-- =========================
+     FEATURES
+========================== -->
     <section class="features" id="about">
       <div class="section-header">
         <p>چرا نگین‌باکس؟</p>
@@ -118,6 +181,10 @@
         </div>
       </div>
     </section>
+
+    <!-- =========================
+     CTA
+========================== -->
     <section class="cta" id="contact">
       <div class="cta-content">
         <p>نگین‌باکس</p>
@@ -129,9 +196,13 @@
           باشید.
         </p>
 
-        <a href="tel:02100000000" class="cta-button"> تماس برای سفارش </a>
+        <a href="tel:09123261810" class="cta-button"> تماس برای سفارش </a>
       </div>
     </section>
+
+    <!-- =========================
+     FOOTER
+========================== -->
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-brand">
@@ -165,5 +236,6 @@
         <p>© 2026 Negin Box — تمامی حقوق محفوظ است.</p>
       </div>
     </footer>
+    ```
   </body>
 </html>

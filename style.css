@@ -619,3 +619,64 @@ body {
     align-items: center;
   }
 }
+/* =========================
+   HERO IMPROVEMENTS
+========================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.hero-secondary-button {
+  display: inline-block;
+
+  padding: 14px 24px;
+
+  color: #24211e;
+  text-decoration: none;
+
+  border: 1px solid #d8d3cd;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-secondary-button:hover {
+  background-color: #ebe7e2;
+  transform: translateY(-2px);
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.hero-trust span {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-trust {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+}
