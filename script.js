@@ -47,16 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let matchCount = 0;
 
     productCards.forEach((card) => {
-      const titleEl =
-        card.querySelector(".card-heading") || card.querySelector("h3");
-      const descEl =
-        card.querySelector(".card-summary") || card.querySelector("p");
-      const titleText = titleEl ? titleEl.textContent.toLowerCase() : "";
-      const descText = descEl ? descEl.textContent.toLowerCase() : "";
+      const cardText = card.textContent.toLowerCase();
       const category = card.dataset.category || "";
 
-      const matchesSearch =
-        query === "" || titleText.includes(query) || descText.includes(query);
+      const matchesSearch = query === "" || cardText.includes(query);
       const matchesCategory =
         activeFilter === "all" || category === activeFilter;
 
@@ -146,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (modal) {
         modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
       }
     });
@@ -154,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function dismissModal() {
     if (modal) {
       modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     }
   }
