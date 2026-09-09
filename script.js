@@ -193,19 +193,36 @@ document.addEventListener("DOMContentLoaded", () => {
         icon: telegramIcon,
         label: "تلگرام",
         ariaLabel: "پیام در تلگرام نگین‌باکس",
+        color: "#229ED9",
       },
       {
         href: "https://ble.ir/+989123261810",
         icon: baleIcon,
         label: "بله",
         ariaLabel: "پیام در بله نگین‌باکس",
+        color: "#6BCB77",
       },
     ];
 
     contactLinks.forEach((item) => {
-      socialWrapper.appendChild(
-        createIconLink({ ...item, className: "instagram-btn" }),
-      );
+      const link = createIconLink({ ...item, className: "instagram-btn" });
+      link.style.color = item.color;
+      link.style.display = "inline-flex";
+      link.style.alignItems = "center";
+      link.style.gap = "8px";
+
+      const svg = link.querySelector("svg");
+      if (svg) {
+        svg.style.width = "20px";
+        svg.style.height = "20px";
+        svg.style.display = "block";
+        svg.style.flexShrink = "0";
+      }
+
+      const text = document.createElement("span");
+      text.textContent = item.label;
+      link.appendChild(text);
+      socialWrapper.appendChild(link);
     });
   }
 
