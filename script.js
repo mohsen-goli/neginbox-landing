@@ -4,14 +4,12 @@
    ======================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Sticky Navigation Blur Effect
   const navbar = document.getElementById("navbar");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 25) navbar.classList.add("scrolled");
     else navbar.classList.remove("scrolled");
   });
 
-  // 2. Mobile Drawer Navigation
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
   const navLinks = document.querySelectorAll(".nav-item");
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Category Filter & Search
   const filterPills = document.querySelectorAll(".filter-pill");
   const productCards = document.querySelectorAll(".product-card");
   const searchInput = document.querySelector("#productSearch");
@@ -79,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4. Modal Quick-View Interaction
   const modal = document.getElementById("productModal");
   const modalDismiss = document.querySelector(".modal-dismiss");
   const modalScrim = document.querySelector(".modal-scrim");
@@ -132,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") dismissModal();
   });
 
-  // 5. Social Contact Icons
   const telegramIcon = `
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M21.8 3.3 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1 .2-1.5L20.8 3c.8-.3 1.5.2 1 1.3Z" />
@@ -155,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return link;
   };
 
-  // 6. Telegram & Bale Contact Links in Footer
   const socialWrapper = document.querySelector(".social-wrapper");
   if (socialWrapper) {
     const contactLinks = [
@@ -185,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 7. Add Telegram & Bale to Navbar — same compact icon + text style as WhatsApp
   const navCtaGroup = document.querySelector(".nav-cta-group");
   if (navCtaGroup) {
     const navSocialLinks = [
@@ -194,9 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     navSocialLinks.forEach((item) => {
-      const link = createIconLink({ ...item, className: "btn-pill-dark" });
+      const link = createIconLink({ ...item, className: "btn-pill-dark nav-social-link" });
       link.style.color = item.color;
-      link.style.display = "inline-flex";
+      link.style.display = window.matchMedia("(max-width: 768px)").matches ? "none" : "inline-flex";
       link.style.alignItems = "center";
       link.style.gap = "7px";
 
@@ -215,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 8. Add Telegram & Bale beside the floating WhatsApp button
   const floatingWhatsapp = document.querySelector(".floating-whatsapp");
   if (floatingWhatsapp) {
     const floatingGroup = document.createElement("div");
