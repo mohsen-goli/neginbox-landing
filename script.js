@@ -160,4 +160,33 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") dismissModal();
   });
+
+  // 5. Telegram & Bale Contact Links
+  const socialWrapper = document.querySelector(".social-wrapper");
+
+  if (socialWrapper) {
+    const contactLinks = [
+      {
+        href: "https://t.me/aliamiri4020",
+        label: "تلگرام: @aliamiri4020",
+        ariaLabel: "پیام در تلگرام نگین‌باکس",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        label: "بله: ۰۹۱۲۳۲۶۱۸۱۰",
+        ariaLabel: "پیام در بله نگین‌باکس",
+      },
+    ];
+
+    contactLinks.forEach(({ href, label, ariaLabel }) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.className = "instagram-btn";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", ariaLabel);
+      link.innerHTML = `<span>${label}</span>`;
+      socialWrapper.appendChild(link);
+    });
+  }
 });
