@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalWhatsapp = document.querySelector(".modal-whatsapp");
 
   productCards.forEach((card) => {
-    // Prevent opening modal when clicking on the direct order button
     const directCta = card.querySelector(".card-cta-btn");
     if (directCta) {
       directCta.addEventListener("click", (e) => {
@@ -187,6 +186,97 @@ document.addEventListener("DOMContentLoaded", () => {
       link.setAttribute("aria-label", ariaLabel);
       link.innerHTML = `<span>${label}</span>`;
       socialWrapper.appendChild(link);
+    });
+  }
+
+  // 6. Add Telegram & Bale to Navbar
+  const navCtaGroup = document.querySelector(".nav-cta-group");
+
+  if (navCtaGroup) {
+    const navSocialLinks = [
+      {
+        href: "https://t.me/aliamiri4020",
+        label: "تلگرام",
+        ariaLabel: "پیام در تلگرام",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        label: "بله",
+        ariaLabel: "پیام در بله",
+      },
+    ];
+
+    navSocialLinks.forEach(({ href, label, ariaLabel }) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.className = "btn-pill-dark";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", ariaLabel);
+      link.innerHTML = `<span>${label}</span>`;
+      navCtaGroup.insertBefore(link, menuToggle || null);
+    });
+  }
+
+  // 7. Add Telegram & Bale beside the floating WhatsApp button
+  const floatingWhatsapp = document.querySelector(".floating-whatsapp");
+
+  if (floatingWhatsapp) {
+    const floatingGroup = document.createElement("div");
+    floatingGroup.style.position = "fixed";
+    floatingGroup.style.right = "24px";
+    floatingGroup.style.bottom = "24px";
+    floatingGroup.style.zIndex = "1000";
+    floatingGroup.style.display = "flex";
+    floatingGroup.style.flexDirection = "column";
+    floatingGroup.style.gap = "10px";
+    floatingGroup.style.alignItems = "center";
+
+    const floatingLinks = [
+      {
+        href: "https://t.me/aliamiri4020",
+        label: "تلگرام",
+        title: "پیام در تلگرام",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        label: "بله",
+        title: "پیام در بله",
+      },
+    ];
+
+    floatingWhatsapp.parentNode.insertBefore(floatingGroup, floatingWhatsapp);
+    floatingGroup.appendChild(floatingWhatsapp);
+
+    floatingLinks.forEach(({ href, label, title }) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.title = title;
+      link.setAttribute("aria-label", title);
+      link.textContent = label;
+      link.style.width = "58px";
+      link.style.height = "58px";
+      link.style.borderRadius = "50%";
+      link.style.background = "var(--ink)";
+      link.style.color = "#ffffff";
+      link.style.display = "flex";
+      link.style.alignItems = "center";
+      link.style.justifyContent = "center";
+      link.style.fontSize = "0.72rem";
+      link.style.fontWeight = "700";
+      link.style.boxShadow = "var(--shadow-float)";
+      link.style.transition = "var(--ease-studio)";
+      link.addEventListener("mouseenter", () => {
+        link.style.background = "var(--bronze)";
+        link.style.transform = "translateY(-3px)";
+      });
+      link.addEventListener("mouseleave", () => {
+        link.style.background = "var(--ink)";
+        link.style.transform = "translateY(0)";
+      });
+      floatingGroup.appendChild(link);
     });
   }
 });
