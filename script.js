@@ -1,7 +1,7 @@
-/* ==========================================================================
+/* ========================================================================
    NEGINBOX - SCRIPTS & INTERACTION LOGIC
    Features: Sticky Navigation, Mobile Menu, Filter & Search, Modal Quick-View
-   ========================================================================== */
+   ======================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Sticky Navigation Blur Effect
@@ -160,65 +160,81 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") dismissModal();
   });
 
-  // 5. Telegram & Bale Contact Links
+  // 5. Social Contact Icons
+  const telegramIcon = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M21.8 3.3 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1 .2-1.5L20.8 3c.8-.3 1.5.2 1 1.3Z" />
+    </svg>`;
+
+  const baleIcon = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M12 2.2c-5.5 0-9.9 4-9.9 9 0 3 1.7 5.7 4.4 7.3v2.4c0 .6.6 1 1.1.7l2.2-1.1c.7.1 1.4.2 2.2.2 5.5 0 9.9-4 9.9-9s-4.4-9.5-9.9-9.5Zm-3.5 9.2c.5-.6 1.1-1.1 1.8-1.5.6-.3 1.3-.5 1.9-.5.8 0 1.5.2 2.1.5.7.4 1.3.9 1.8 1.5.2.3.2.6-.1.8-.3.2-.6.2-.8-.1-.4-.5-.8-.8-1.3-1.1-.5-.3-1.1-.4-1.7-.4s-1.1.1-1.6.4c-.5.3-1 .6-1.3 1.1-.2.3-.5.3-.8.1-.2-.2-.2-.5 0-.8Zm7.1 3.4c-.2.2-.5.2-.8 0-.8-.7-1.7-1.1-2.8-1.1s-2 .4-2.8 1.1c-.3.2-.6.2-.8 0-.2-.3-.2-.6.1-.8 1-.9 2.2-1.4 3.5-1.4s2.5.5 3.5 1.4c.3.2.3.5.1.8Z" />
+    </svg>`;
+
+  const createIconLink = ({ href, icon, label, ariaLabel, className }) => {
+    const link = document.createElement("a");
+    link.href = href;
+    link.className = className;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", ariaLabel);
+    link.title = label;
+    link.innerHTML = icon;
+    return link;
+  };
+
+  // 6. Telegram & Bale Contact Links in Footer
   const socialWrapper = document.querySelector(".social-wrapper");
 
   if (socialWrapper) {
     const contactLinks = [
       {
         href: "https://t.me/aliamiri4020",
-        label: "تلگرام: @aliamiri4020",
+        icon: telegramIcon,
+        label: "تلگرام",
         ariaLabel: "پیام در تلگرام نگین‌باکس",
       },
       {
         href: "https://ble.ir/+989123261810",
-        label: "بله: ۰۹۱۲۳۲۶۱۸۱۰",
+        icon: baleIcon,
+        label: "بله",
         ariaLabel: "پیام در بله نگین‌باکس",
       },
     ];
 
-    contactLinks.forEach(({ href, label, ariaLabel }) => {
-      const link = document.createElement("a");
-      link.href = href;
-      link.className = "instagram-btn";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", ariaLabel);
-      link.innerHTML = `<span>${label}</span>`;
-      socialWrapper.appendChild(link);
+    contactLinks.forEach((item) => {
+      socialWrapper.appendChild(
+        createIconLink({ ...item, className: "instagram-btn" }),
+      );
     });
   }
 
-  // 6. Add Telegram & Bale to Navbar
+  // 7. Add Telegram & Bale to Navbar
   const navCtaGroup = document.querySelector(".nav-cta-group");
 
   if (navCtaGroup) {
     const navSocialLinks = [
       {
         href: "https://t.me/aliamiri4020",
+        icon: telegramIcon,
         label: "تلگرام",
         ariaLabel: "پیام در تلگرام",
       },
       {
         href: "https://ble.ir/+989123261810",
+        icon: baleIcon,
         label: "بله",
         ariaLabel: "پیام در بله",
       },
     ];
 
-    navSocialLinks.forEach(({ href, label, ariaLabel }) => {
-      const link = document.createElement("a");
-      link.href = href;
-      link.className = "btn-pill-dark";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", ariaLabel);
-      link.innerHTML = `<span>${label}</span>`;
+    navSocialLinks.forEach((item) => {
+      const link = createIconLink({ ...item, className: "btn-pill-dark" });
       navCtaGroup.insertBefore(link, menuToggle || null);
     });
   }
 
-  // 7. Add Telegram & Bale beside the floating WhatsApp button
+  // 8. Add Telegram & Bale beside the floating WhatsApp button
   const floatingWhatsapp = document.querySelector(".floating-whatsapp");
 
   if (floatingWhatsapp) {
@@ -235,11 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const floatingLinks = [
       {
         href: "https://t.me/aliamiri4020",
+        icon: telegramIcon,
         label: "تلگرام",
         title: "پیام در تلگرام",
       },
       {
         href: "https://ble.ir/+989123261810",
+        icon: baleIcon,
         label: "بله",
         title: "پیام در بله",
       },
@@ -248,14 +266,15 @@ document.addEventListener("DOMContentLoaded", () => {
     floatingWhatsapp.parentNode.insertBefore(floatingGroup, floatingWhatsapp);
     floatingGroup.appendChild(floatingWhatsapp);
 
-    floatingLinks.forEach(({ href, label, title }) => {
-      const link = document.createElement("a");
-      link.href = href;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.title = title;
-      link.setAttribute("aria-label", title);
-      link.textContent = label;
+    floatingLinks.forEach(({ href, icon, label, title }) => {
+      const link = createIconLink({
+        href,
+        icon,
+        label,
+        ariaLabel: title,
+        className: "floating-contact-icon",
+      });
+
       link.style.width = "58px";
       link.style.height = "58px";
       link.style.borderRadius = "50%";
@@ -264,10 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
       link.style.display = "flex";
       link.style.alignItems = "center";
       link.style.justifyContent = "center";
-      link.style.fontSize = "0.72rem";
-      link.style.fontWeight = "700";
       link.style.boxShadow = "var(--shadow-float)";
       link.style.transition = "var(--ease-studio)";
+
+      const svg = link.querySelector("svg");
+      if (svg) {
+        svg.style.width = "29px";
+        svg.style.height = "29px";
+        svg.style.display = "block";
+      }
+
       link.addEventListener("mouseenter", () => {
         link.style.background = "var(--bronze)";
         link.style.transform = "translateY(-3px)";
@@ -276,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
         link.style.background = "var(--ink)";
         link.style.transform = "translateY(0)";
       });
+
       floatingGroup.appendChild(link);
     });
   }
