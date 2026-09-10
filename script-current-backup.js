@@ -164,42 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") dismissModal();
   });
-  const telegramIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.8 3.3 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-5-1.6c-1.1-.3-1.1-1 .2-1.5L20.8 3c.8-.3 1.5.2 1 1.3Z"/></svg>`;
-  const baleIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.2c-5.5 0-9.9 4-9.9 9 0 3 1.7 5.7 4.4 7.3v2.4c0 .6.6 1 1.1.7l2.2-1.1c.7.1 1.4.2 2.2.2 5.5 0 9.9-4 9.9-9s-4.4-9.5-9.9-9.5Z"/></svg>`;
-
-  const createIconLink = ({ href, icon, label, ariaLabel, className }) => {
-    const link = document.createElement("a");
-    link.href = href;
-    link.className = className;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.setAttribute("aria-label", ariaLabel);
-    link.title = label;
-    link.innerHTML = icon;
-    return link;
-  };
-
-  const socialWrapper = document.querySelector(".social-wrapper");
-  if (socialWrapper) {
-    [
-      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "تلگرام", ariaLabel: "پیام در تلگرام", color: "#229ED9" },
-      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "بله", ariaLabel: "پیام در بله", color: "#79D99A" }
-    ].forEach((item) => {
-      const link = createIconLink({ ...item, className: "instagram-btn" });
-      link.style.color = item.color;
-      link.style.display = "inline-flex";
-      link.style.alignItems = "center";
-      link.style.gap = "8px";
-      const svg = link.querySelector("svg");
-      if (svg) {
-        svg.style.width = "20px";
-        svg.style.height = "20px";
-        svg.style.display = "block";
-      }
-      const text = document.createElement("span");
-      text.textContent = item.label;
-      link.appendChild(text);
-      socialWrapper.appendChild(link);
-    });
-  }
 });

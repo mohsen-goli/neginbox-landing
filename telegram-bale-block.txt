@@ -1,0 +1,112 @@
+﻿  };
+
+  const socialWrapper = document.querySelector(".social-wrapper");
+  if (socialWrapper) {
+    const contactLinks = [
+      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "╪ز┘┌»╪▒╪د┘à", ariaLabel: "┘╛█î╪د┘à ╪»╪▒ ╪ز┘┌»╪▒╪د┘à ┘┌»█î┘ظî╪ذ╪د┌ر╪│", color: "#229ED9" },
+      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "╪ذ┘┘ç", ariaLabel: "┘╛█î╪د┘à ╪»╪▒ ╪ذ┘┘ç ┘┌»█î┘ظî╪ذ╪د┌ر╪│", color: "#79D99A" },
+    ];
+
+    contactLinks.forEach((item) => {
+      const link = createIconLink({ ...item, className: "instagram-btn" });
+      link.style.color = item.color;
+      link.style.display = "inline-flex";
+      link.style.alignItems = "center";
+      link.style.gap = "8px";
+
+      const svg = link.querySelector("svg");
+      if (svg) {
+        svg.style.width = "20px";
+        svg.style.height = "20px";
+        svg.style.display = "block";
+        svg.style.flexShrink = "0";
+      }
+
+      const text = document.createElement("span");
+      text.textContent = item.label;
+      link.appendChild(text);
+      socialWrapper.appendChild(link);
+    });
+  }
+
+  const navCtaGroup = document.querySelector(".nav-cta-group");
+  if (navCtaGroup) {
+    const navSocialLinks = [
+      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "╪ز┘┌»╪▒╪د┘à", ariaLabel: "┘╛█î╪د┘à ╪»╪▒ ╪ز┘┌»╪▒╪د┘à", color: "#229ED9" },
+      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "╪ذ┘┘ç", ariaLabel: "┘╛█î╪د┘à ╪»╪▒ ╪ذ┘┘ç", color: "#79D99A" },
+    ];
+
+    navSocialLinks.forEach((item) => {
+      const link = createIconLink({ ...item, className: "btn-pill-dark nav-social-link" });
+      link.style.color = item.color;
+      link.style.display = window.matchMedia("(max-width: 768px)").matches ? "none" : "inline-flex";
+      link.style.alignItems = "center";
+      link.style.gap = "7px";
+
+      const svg = link.querySelector("svg");
+      if (svg) {
+        svg.style.width = "16px";
+        svg.style.height = "16px";
+        svg.style.display = "block";
+        svg.style.flexShrink = "0";
+      }
+
+      const text = document.createElement("span");
+      text.textContent = item.label;
+      link.appendChild(text);
+      navCtaGroup.insertBefore(link, menuToggle || null);
+    });
+  }
+
+  const floatingWhatsapp = document.querySelector(".floating-whatsapp");
+  if (floatingWhatsapp) {
+    const floatingGroup = document.createElement("div");
+    floatingGroup.style.position = "fixed";
+    floatingGroup.style.right = "24px";
+    floatingGroup.style.bottom = "24px";
+    floatingGroup.style.zIndex = "1000";
+    floatingGroup.style.display = "flex";
+    floatingGroup.style.flexDirection = "column";
+    floatingGroup.style.gap = "10px";
+    floatingGroup.style.alignItems = "center";
+
+    const floatingLinks = [
+      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "╪ز┘┌»╪▒╪د┘à", title: "┘╛█î╪د┘à ╪»╪▒ ╪ز┘┌»╪▒╪د┘à", color: "#229ED9" },
+      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "╪ذ┘┘ç", title: "┘╛█î╪د┘à ╪»╪▒ ╪ذ┘┘ç", color: "#79D99A" },
+    ];
+
+    floatingWhatsapp.parentNode.insertBefore(floatingGroup, floatingWhatsapp);
+    floatingGroup.appendChild(floatingWhatsapp);
+
+    floatingLinks.forEach(({ href, icon, label, title, color }) => {
+      const link = createIconLink({ href, icon, label, ariaLabel: title, className: "floating-contact-icon" });
+      link.style.width = "58px";
+      link.style.height = "58px";
+      link.style.borderRadius = "50%";
+      link.style.background = color;
+      link.style.color = "#ffffff";
+      link.style.display = "flex";
+      link.style.alignItems = "center";
+      link.style.justifyContent = "center";
+      link.style.boxShadow = "var(--shadow-float)";
+      link.style.transition = "var(--ease-studio)";
+
+      const svg = link.querySelector("svg");
+      if (svg) {
+        svg.style.width = "29px";
+        svg.style.height = "29px";
+        svg.style.display = "block";
+      }
+
+      link.addEventListener("mouseenter", () => {
+        link.style.filter = "brightness(0.92)";
+        link.style.transform = "translateY(-3px)";
+      });
+      link.addEventListener("mouseleave", () => {
+        link.style.filter = "none";
+        link.style.transform = "translateY(0)";
+      });
+      floatingGroup.appendChild(link);
+    });
+  }
+});
