@@ -1,14 +1,6 @@
-{
+﻿{
   "name": "neginbox-landing",
   "version": "1.0.0",
-  "description": "نگین‌باکس - تولید تخصصی تخت‌باکس با اسکلت فلزی",
-  "type": "module",
-  "scripts": {
-    "dev": "node server.js",
-    "build": "echo 'Build complete'",
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.21.2"
-  }
+  "description": "NeginBox landing page",
+  "scripts": {}
 }
