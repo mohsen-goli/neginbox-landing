@@ -259,4 +259,27 @@ document.addEventListener("DOMContentLoaded", () => {
       floatingGroup.appendChild(link);
     });
   }
+
+  // Reviews Category Filtering
+  const reviewTabs = document.querySelectorAll(".review-tab-btn");
+  const reviewCards = document.querySelectorAll(".review-card");
+
+  if (reviewTabs.length > 0 && reviewCards.length > 0) {
+    reviewTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        reviewTabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const filter = tab.dataset.reviewFilter || "all";
+
+        reviewCards.forEach((card) => {
+          const category = card.dataset.reviewCategory || "";
+          if (filter === "all" || category === filter) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  }
 });
