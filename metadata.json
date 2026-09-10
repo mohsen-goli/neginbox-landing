@@ -1,0 +1,8 @@
+{
+  "name": "نگین‌باکس | Neginbox Landing",
+  "description": "تولیدی نگین‌باکس؛ تولید تخصصی تخت‌باکس با اسکلت فلزی و آهن پروفیل، استفاده حداکثری از متراژ اتاق خواب با طراحی مدرن و کاربردی.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
