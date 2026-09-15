@@ -1,0 +1,23 @@
+﻿# NeginBox
+
+> نگین‌باکس تولیدکننده و ارائه‌دهنده تخت باکس با اسکلت فلزی و آهن پروفیل است.
+
+## Main Website
+
+- https://neginbox.vercel.app/
+
+## Products
+
+- https://neginbox.vercel.app/#products
+
+## About
+
+- https://neginbox.vercel.app/#about
+
+## Reviews
+
+- https://neginbox.vercel.app/#reviews
+
+## Contact
+
+- https://neginbox.vercel.app/#contact
