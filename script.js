@@ -352,3 +352,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// Google Analytics - Telegram & Bale Click Tracking
+const telegramLinks = document.querySelectorAll('a[href*="t.me"]');
+const baleLinks = document.querySelectorAll('a[href*="bale.ai"]');
+
+telegramLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "telegram_click", {
+        link_url: link.href,
+      });
+    }
+  });
+});
+
+baleLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "bale_click", {
+        link_url: link.href,
+      });
+    }
+  });
+});
