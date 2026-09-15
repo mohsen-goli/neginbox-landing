@@ -5,6 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.getElementById("navbar");
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 25) navbar.classList.add("scrolled");
     else navbar.classList.remove("scrolled");
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       menuToggle.classList.toggle("open");
       navMenu.classList.toggle("show");
     });
+
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         menuToggle.classList.remove("open");
@@ -26,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  /* ======================================================================
+     PRODUCT FILTER & SEARCH
+     ====================================================================== */
 
   const filterPills = document.querySelectorAll(".filter-pill");
   const productCards = document.querySelectorAll(".product-card");
@@ -35,50 +41,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterCatalog() {
     const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
     const activeFilterEl = document.querySelector(".filter-pill.active");
+
     const activeFilter = activeFilterEl ? activeFilterEl.dataset.filter : "all";
+
     let matchCount = 0;
 
     productCards.forEach((card) => {
       const cardText = card.textContent.toLowerCase();
       const category = card.dataset.category || "";
+
       const matchesSearch = query === "" || cardText.includes(query);
+
       const matchesCategory =
         activeFilter === "all" || category === activeFilter;
 
       if (matchesSearch && matchesCategory) {
         card.style.display = "flex";
         matchCount++;
-      } else card.style.display = "none";
+      } else {
+        card.style.display = "none";
+      }
     });
 
-    if (noResultsMessage)
+    if (noResultsMessage) {
       noResultsMessage.style.display = matchCount === 0 ? "block" : "none";
+    }
   }
 
   filterPills.forEach((pill) => {
     pill.addEventListener("click", () => {
       filterPills.forEach((p) => p.classList.remove("active"));
+
       pill.classList.add("active");
+
       filterCatalog();
     });
   });
 
-  if (searchInput) searchInput.addEventListener("input", filterCatalog);
+  if (searchInput) {
+    searchInput.addEventListener("input", filterCatalog);
+  }
 
   if (resetSearchBtn) {
     resetSearchBtn.addEventListener("click", () => {
-      if (searchInput) searchInput.value = "";
+      if (searchInput) {
+        searchInput.value = "";
+      }
+
       const allFilterPill = document.querySelector(
         '.filter-pill[data-filter="all"]',
       );
+
       if (allFilterPill) {
         filterPills.forEach((p) => p.classList.remove("active"));
+
         allFilterPill.classList.add("active");
       }
+
       filterCatalog();
     });
   }
+
+  /* ======================================================================
+     PRODUCT MODAL
+     ====================================================================== */
 
   const modal = document.getElementById("productModal");
   const modalDismiss = document.querySelector(".modal-dismiss");
@@ -90,34 +118,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   productCards.forEach((card) => {
     const directCta = card.querySelector(".card-cta-btn");
-    if (directCta)
-      directCta.addEventListener("click", (e) => e.stopPropagation());
+
+    if (directCta) {
+      directCta.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
 
     card.addEventListener("click", () => {
       const img = card.querySelector("img");
+
       const title =
         card.querySelector(".card-heading") || card.querySelector("h3");
+
       const desc =
         card.querySelector(".card-summary") || card.querySelector("p");
 
       if (modalImage && img) {
         modalImage.src = img.src;
+
         modalImage.alt = title ? title.textContent : "تخت خواب نگین‌باکس";
       }
-      if (modalTitle && title) modalTitle.textContent = title.textContent;
-      if (modalDescription && desc)
+
+      if (modalTitle && title) {
+        modalTitle.textContent = title.textContent;
+      }
+
+      if (modalDescription && desc) {
         modalDescription.textContent = desc.textContent;
+      }
 
       if (modalWhatsapp && title) {
         const prodName = title.textContent.trim();
-        const msg = `سلام، درباره ${prodName} نگین‌باکس مایل به دریافت مشاوره و استعلام قیمت هستم.`;
+
+        const msg =
+          `سلام، درباره ${prodName} نگین‌باکس ` +
+          `مایل به دریافت مشاوره و استعلام قیمت هستم.`;
+
         modalWhatsapp.href =
           "https://wa.me/989123261810?text=" + encodeURIComponent(msg);
       }
 
       if (modal) {
         modal.classList.add("show");
+
         modal.setAttribute("aria-hidden", "false");
+
         document.body.style.overflow = "hidden";
       }
     });
@@ -126,16 +172,30 @@ document.addEventListener("DOMContentLoaded", () => {
   function dismissModal() {
     if (modal) {
       modal.classList.remove("show");
+
       modal.setAttribute("aria-hidden", "true");
+
       document.body.style.overflow = "";
     }
   }
 
-  if (modalDismiss) modalDismiss.addEventListener("click", dismissModal);
-  if (modalScrim) modalScrim.addEventListener("click", dismissModal);
+  if (modalDismiss) {
+    modalDismiss.addEventListener("click", dismissModal);
+  }
+
+  if (modalScrim) {
+    modalScrim.addEventListener("click", dismissModal);
+  }
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") dismissModal();
+    if (e.key === "Escape") {
+      dismissModal();
+    }
   });
+
+  /* ======================================================================
+     TELEGRAM & BALE ICONS
+     ====================================================================== */
 
   const telegramIcon = `
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -149,17 +209,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const createIconLink = ({ href, icon, label, ariaLabel, className }) => {
     const link = document.createElement("a");
+
     link.href = href;
+
     link.className = className;
+
     link.target = "_blank";
+
     link.rel = "noopener noreferrer";
+
     link.setAttribute("aria-label", ariaLabel);
+
     link.title = label;
+
     link.innerHTML = icon;
+
     return link;
   };
 
+  /* ======================================================================
+     SOCIAL LINKS
+     ====================================================================== */
+
   const socialWrapper = document.querySelector(".social-wrapper");
+
   if (socialWrapper) {
     const contactLinks = [
       {
@@ -179,28 +252,47 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     contactLinks.forEach((item) => {
-      const link = createIconLink({ ...item, className: "instagram-btn" });
+      const link = createIconLink({
+        ...item,
+        className: "instagram-btn",
+      });
+
       link.style.color = item.color;
+
       link.style.display = "inline-flex";
+
       link.style.alignItems = "center";
+
       link.style.gap = "8px";
 
       const svg = link.querySelector("svg");
+
       if (svg) {
         svg.style.width = "20px";
+
         svg.style.height = "20px";
+
         svg.style.display = "block";
+
         svg.style.flexShrink = "0";
       }
 
       const text = document.createElement("span");
+
       text.textContent = item.label;
+
       link.appendChild(text);
+
       socialWrapper.appendChild(link);
     });
   }
 
+  /* ======================================================================
+     NAVIGATION SOCIAL LINKS
+     ====================================================================== */
+
   const navCtaGroup = document.querySelector(".nav-cta-group");
+
   if (navCtaGroup) {
     const navSocialLinks = [
       {
@@ -224,38 +316,62 @@ document.addEventListener("DOMContentLoaded", () => {
         ...item,
         className: "btn-pill-dark nav-social-link",
       });
+
       link.style.color = item.color;
+
       link.style.display = window.matchMedia("(max-width: 768px)").matches
         ? "none"
         : "inline-flex";
+
       link.style.alignItems = "center";
+
       link.style.gap = "7px";
 
       const svg = link.querySelector("svg");
+
       if (svg) {
         svg.style.width = "16px";
+
         svg.style.height = "16px";
+
         svg.style.display = "block";
+
         svg.style.flexShrink = "0";
       }
 
       const text = document.createElement("span");
+
       text.textContent = item.label;
+
       link.appendChild(text);
+
       navCtaGroup.insertBefore(link, menuToggle || null);
     });
   }
 
+  /* ======================================================================
+     FLOATING SOCIAL LINKS
+     ====================================================================== */
+
   const floatingWhatsapp = document.querySelector(".floating-whatsapp");
+
   if (floatingWhatsapp) {
     const floatingGroup = document.createElement("div");
+
     floatingGroup.style.position = "fixed";
+
     floatingGroup.style.right = "24px";
+
     floatingGroup.style.bottom = "24px";
+
     floatingGroup.style.zIndex = "1000";
+
     floatingGroup.style.display = "flex";
+
     floatingGroup.style.flexDirection = "column";
+
     floatingGroup.style.gap = "10px";
+
     floatingGroup.style.alignItems = "center";
 
     const floatingLinks = [
@@ -276,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     floatingWhatsapp.parentNode.insertBefore(floatingGroup, floatingWhatsapp);
+
     floatingGroup.appendChild(floatingWhatsapp);
 
     floatingLinks.forEach(({ href, icon, label, title, color }) => {
@@ -286,49 +403,73 @@ document.addEventListener("DOMContentLoaded", () => {
         ariaLabel: title,
         className: "floating-contact-icon",
       });
+
       link.style.width = "58px";
+
       link.style.height = "58px";
+
       link.style.borderRadius = "50%";
+
       link.style.background = color;
+
       link.style.color = "#ffffff";
+
       link.style.display = "flex";
+
       link.style.alignItems = "center";
+
       link.style.justifyContent = "center";
+
       link.style.boxShadow = "var(--shadow-float)";
+
       link.style.transition = "var(--ease-studio)";
 
       const svg = link.querySelector("svg");
+
       if (svg) {
         svg.style.width = "29px";
+
         svg.style.height = "29px";
+
         svg.style.display = "block";
       }
 
       link.addEventListener("mouseenter", () => {
         link.style.filter = "brightness(0.92)";
+
         link.style.transform = "translateY(-3px)";
       });
+
       link.addEventListener("mouseleave", () => {
         link.style.filter = "none";
+
         link.style.transform = "translateY(0)";
       });
+
       floatingGroup.appendChild(link);
     });
   }
 
-  // Reviews Category Filtering
+  /* ======================================================================
+     REVIEWS CATEGORY FILTERING
+     ====================================================================== */
+
   const reviewTabs = document.querySelectorAll(".review-tab-btn");
+
   const reviewCards = document.querySelectorAll(".review-card");
 
   if (reviewTabs.length > 0 && reviewCards.length > 0) {
     reviewTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         reviewTabs.forEach((t) => t.classList.remove("active"));
+
         tab.classList.add("active");
+
         const filter = tab.dataset.reviewFilter || "all";
 
         reviewCards.forEach((card) => {
           const category = card.dataset.reviewCategory || "";
+
           if (filter === "all" || category === filter) {
             card.style.display = "flex";
           } else {
@@ -339,38 +480,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Google Analytics - WhatsApp Click Tracking
-  const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+  /* ======================================================================
+     GOOGLE ANALYTICS - SOCIAL CLICK TRACKING
+     ====================================================================== */
 
-  whatsappLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (typeof gtag === "function") {
-        gtag("event", "whatsapp_click", {
-          link_url: link.href,
-        });
-      }
-    });
-  });
-});
-// Google Analytics - Telegram & Bale Click Tracking
-const telegramLinks = document.querySelectorAll('a[href*="t.me"]');
-const baleLinks = document.querySelectorAll('a[href*="bale.ai"]');
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
 
-telegramLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (typeof gtag === "function") {
-      gtag("event", "telegram_click", {
-        link_url: link.href,
+    if (!link || typeof gtag !== "function") {
+      return;
+    }
+
+    const href = link.href || "";
+
+    if (href.includes("wa.me")) {
+      gtag("event", "whatsapp_click", {
+        link_url: href,
       });
     }
-  });
-});
 
-baleLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (typeof gtag === "function") {
+    if (href.includes("t.me")) {
+      gtag("event", "telegram_click", {
+        link_url: href,
+      });
+    }
+
+    if (href.includes("ble.ir")) {
       gtag("event", "bale_click", {
-        link_url: link.href,
+        link_url: href,
       });
     }
   });
