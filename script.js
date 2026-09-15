@@ -43,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardText = card.textContent.toLowerCase();
       const category = card.dataset.category || "";
       const matchesSearch = query === "" || cardText.includes(query);
-      const matchesCategory = activeFilter === "all" || category === activeFilter;
+      const matchesCategory =
+        activeFilter === "all" || category === activeFilter;
 
       if (matchesSearch && matchesCategory) {
         card.style.display = "flex";
@@ -51,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else card.style.display = "none";
     });
 
-    if (noResultsMessage) noResultsMessage.style.display = matchCount === 0 ? "block" : "none";
+    if (noResultsMessage)
+      noResultsMessage.style.display = matchCount === 0 ? "block" : "none";
   }
 
   filterPills.forEach((pill) => {
@@ -67,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (resetSearchBtn) {
     resetSearchBtn.addEventListener("click", () => {
       if (searchInput) searchInput.value = "";
-      const allFilterPill = document.querySelector('.filter-pill[data-filter="all"]');
+      const allFilterPill = document.querySelector(
+        '.filter-pill[data-filter="all"]',
+      );
       if (allFilterPill) {
         filterPills.forEach((p) => p.classList.remove("active"));
         allFilterPill.classList.add("active");
@@ -86,24 +90,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   productCards.forEach((card) => {
     const directCta = card.querySelector(".card-cta-btn");
-    if (directCta) directCta.addEventListener("click", (e) => e.stopPropagation());
+    if (directCta)
+      directCta.addEventListener("click", (e) => e.stopPropagation());
 
     card.addEventListener("click", () => {
       const img = card.querySelector("img");
-      const title = card.querySelector(".card-heading") || card.querySelector("h3");
-      const desc = card.querySelector(".card-summary") || card.querySelector("p");
+      const title =
+        card.querySelector(".card-heading") || card.querySelector("h3");
+      const desc =
+        card.querySelector(".card-summary") || card.querySelector("p");
 
       if (modalImage && img) {
         modalImage.src = img.src;
         modalImage.alt = title ? title.textContent : "تخت خواب نگین‌باکس";
       }
       if (modalTitle && title) modalTitle.textContent = title.textContent;
-      if (modalDescription && desc) modalDescription.textContent = desc.textContent;
+      if (modalDescription && desc)
+        modalDescription.textContent = desc.textContent;
 
       if (modalWhatsapp && title) {
         const prodName = title.textContent.trim();
         const msg = `سلام، درباره ${prodName} نگین‌باکس مایل به دریافت مشاوره و استعلام قیمت هستم.`;
-        modalWhatsapp.href = "https://wa.me/989123261810?text=" + encodeURIComponent(msg);
+        modalWhatsapp.href =
+          "https://wa.me/989123261810?text=" + encodeURIComponent(msg);
       }
 
       if (modal) {
@@ -153,8 +162,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const socialWrapper = document.querySelector(".social-wrapper");
   if (socialWrapper) {
     const contactLinks = [
-      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "تلگرام", ariaLabel: "پیام در تلگرام نگین‌باکس", color: "#229ED9" },
-      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "بله", ariaLabel: "پیام در بله نگین‌باکس", color: "#79D99A" },
+      {
+        href: "https://t.me/aliamiri4020",
+        icon: telegramIcon,
+        label: "تلگرام",
+        ariaLabel: "پیام در تلگرام نگین‌باکس",
+        color: "#229ED9",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        icon: baleIcon,
+        label: "بله",
+        ariaLabel: "پیام در بله نگین‌باکس",
+        color: "#79D99A",
+      },
     ];
 
     contactLinks.forEach((item) => {
@@ -182,14 +203,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const navCtaGroup = document.querySelector(".nav-cta-group");
   if (navCtaGroup) {
     const navSocialLinks = [
-      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "تلگرام", ariaLabel: "پیام در تلگرام", color: "#229ED9" },
-      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "بله", ariaLabel: "پیام در بله", color: "#79D99A" },
+      {
+        href: "https://t.me/aliamiri4020",
+        icon: telegramIcon,
+        label: "تلگرام",
+        ariaLabel: "پیام در تلگرام",
+        color: "#229ED9",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        icon: baleIcon,
+        label: "بله",
+        ariaLabel: "پیام در بله",
+        color: "#79D99A",
+      },
     ];
 
     navSocialLinks.forEach((item) => {
-      const link = createIconLink({ ...item, className: "btn-pill-dark nav-social-link" });
+      const link = createIconLink({
+        ...item,
+        className: "btn-pill-dark nav-social-link",
+      });
       link.style.color = item.color;
-      link.style.display = window.matchMedia("(max-width: 768px)").matches ? "none" : "inline-flex";
+      link.style.display = window.matchMedia("(max-width: 768px)").matches
+        ? "none"
+        : "inline-flex";
       link.style.alignItems = "center";
       link.style.gap = "7px";
 
@@ -221,15 +259,33 @@ document.addEventListener("DOMContentLoaded", () => {
     floatingGroup.style.alignItems = "center";
 
     const floatingLinks = [
-      { href: "https://t.me/aliamiri4020", icon: telegramIcon, label: "تلگرام", title: "پیام در تلگرام", color: "#229ED9" },
-      { href: "https://ble.ir/+989123261810", icon: baleIcon, label: "بله", title: "پیام در بله", color: "#79D99A" },
+      {
+        href: "https://t.me/aliamiri4020",
+        icon: telegramIcon,
+        label: "تلگرام",
+        title: "پیام در تلگرام",
+        color: "#229ED9",
+      },
+      {
+        href: "https://ble.ir/+989123261810",
+        icon: baleIcon,
+        label: "بله",
+        title: "پیام در بله",
+        color: "#79D99A",
+      },
     ];
 
     floatingWhatsapp.parentNode.insertBefore(floatingGroup, floatingWhatsapp);
     floatingGroup.appendChild(floatingWhatsapp);
 
     floatingLinks.forEach(({ href, icon, label, title, color }) => {
-      const link = createIconLink({ href, icon, label, ariaLabel: title, className: "floating-contact-icon" });
+      const link = createIconLink({
+        href,
+        icon,
+        label,
+        ariaLabel: title,
+        className: "floating-contact-icon",
+      });
       link.style.width = "58px";
       link.style.height = "58px";
       link.style.borderRadius = "50%";
@@ -282,4 +338,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Google Analytics - WhatsApp Click Tracking
+  const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+
+  whatsappLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "whatsapp_click", {
+          link_url: link.href,
+        });
+      }
+    });
+  });
 });
