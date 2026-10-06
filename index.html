@@ -83,22 +83,40 @@
     </script>
 
     <!-- Organization Schema -->
+    <!-- Local Business Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "FurnitureStore",
         "name": "نگین‌باکس",
         "alternateName": "NeginBox",
         "url": "https://neginbox.shop/",
         "logo": "https://neginbox.shop/images/logo.png",
-        "description": "تولید و سفارش تخت باکس با اسکلت فلزی و آهن پروفیل.",
+        "image": "https://neginbox.shop/images/hero.jpg",
+        "description": "تولید و سفارش تخت باکس و سرویس خواب با اسکلت فلزی و آهن پروفیل در تهران.",
+        "telephone": "+989123261810",
         "sameAs": ["https://instagram.com/neginbox"],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+989123261810",
-          "contactType": "customer service",
-          "availableLanguage": ["fa"]
-        }
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "خیابان سراج، ابتدای خیابان جهانشاهلو، پلاک ۲۹",
+          "addressLocality": "تهران",
+          "addressCountry": "IR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Saturday",
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday"
+            ],
+            "opens": "08:00",
+            "closes": "20:00"
+          }
+        ]
       }
     </script>
   </head>
